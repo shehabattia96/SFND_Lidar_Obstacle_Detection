@@ -10,11 +10,13 @@
 #include <vector>
 #include <string>
 
+
 struct Color
 {
 
 	float r, g, b;
 
+	Color() : r(rand() / double(RAND_MAX)), g(rand() / double(RAND_MAX)), b(rand() / double(RAND_MAX)) {};
 	Color(float setR, float setG, float setB)
 		: r(setR), g(setG), b(setB)
 	{}

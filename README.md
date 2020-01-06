@@ -24,5 +24,8 @@
 * PCL RANSAC tutorial [http://pointclouds.org/documentation/tutorials/extract_indices.php#extract-indices](http://pointclouds.org/documentation/tutorials/extract_indices.php#extract-indices) - was helpful in defining the segmentation algorithm to retrieve important indicies, then filtering those indecies to extract useful point clouds.
 * PCL KD Clustering tutorial [http://www.pointclouds.org/documentation/tutorials/cluster_extraction.php](http://www.pointclouds.org/documentation/tutorials/cluster_extraction.php) - was helpful in separating entities in the scene
 
+### notes
+* not using `typename` with boost ptr didn't cause a complier error
+
 ### original repo
 check out the original readme at [https://github.com/udacity/SFND_Lidar_Obstacle_Detection/blob/master/README.md](https://github.com/udacity/SFND_Lidar_Obstacle_Detection/blob/master/README.md)

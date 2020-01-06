@@ -67,7 +67,7 @@ void simpleHighway(pcl::visualization::PCLVisualizer::Ptr& viewer)
     float distanceThreshold (0.2f);
     std::pair<pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr> segmentCloud = pointProcessor.SegmentPlane(lidarCloud, maxIterations, distanceThreshold);
     if (renderSegmentedGround) renderPointCloud(viewer,segmentCloud.first, "groundPcd", Color(1,1,1));
-    if (renderLidarPointCloud) renderPointCloud(viewer,segmentCloud.second, "entitiesPcd", Color(1,1,0)); 
+    if (renderSegmentedEntities) renderPointCloud(viewer,segmentCloud.second, "entitiesPcd", Color(1,1,0)); 
 
     // cluster scene entities
     float clusterTolerance (1.0);
@@ -116,15 +116,93 @@ void initCamera(CameraAngle setAngle, pcl::visualization::PCLVisualizer::Ptr& vi
         viewer->addCoordinateSystem (1.0);
 }
 
+void cityBlock(pcl::visualization::PCLVisualizer::Ptr& viewer, std::string pcdFile) {
+    // render options
+    bool renderRawPcd = false;
+    bool downsampledPcd = false;
+    bool renderSegmentedGround = true;
+    bool renderSegmentedEntities = true;
+    bool renderClusteredEntities = true;
+
+    // car
+    Box egoCar;
+    egoCar.x_min = -1.5;
+    egoCar.y_min = -1.7;
+    egoCar.z_min = -1;
+    egoCar.x_max = 2.6;
+    egoCar.y_max = 1.7;
+    egoCar.z_max = -0.4;
+    Eigen::Vector4f egoCarMinPoint (egoCar.x_min, egoCar.y_min, egoCar.z_min, 1);
+    Eigen::Vector4f egoCarMaxPoint (egoCar.x_max, egoCar.y_max, egoCar.z_max, 1);
+
+    ProcessPointClouds<pcl::PointXYZI> pointProcessorI;
+    pcl::PointCloud<pcl::PointXYZI>::Ptr inputCloud = pointProcessorI.loadPcd(pcdFile);
+    std::cout << "input cloud loaded with number of points equal "; pointProcessorI.numPoints(inputCloud);
+    if (renderRawPcd) renderPointCloud(viewer, inputCloud, "inputCloud");
+
+    // downsample the point cloud
+    float filterRes (0.2);
+    float worldSize = 10.0;
+    Eigen::Vector4f minPoint (-worldSize, -worldSize, -worldSize,1);
+    Eigen::Vector4f maxPoint (worldSize, worldSize, worldSize,1);
+
+    // downsample by filterRes and crop by worldSize
+    pcl::PointCloud<pcl::PointXYZI>::Ptr filterCloud = pointProcessorI.FilterCloud(inputCloud, filterRes, minPoint, maxPoint);
+    // remove any points inside the car's bounding box
+    filterCloud = pointProcessorI.CropCloud(filterCloud, egoCarMinPoint, egoCarMaxPoint, true);
+    if (downsampledPcd) renderPointCloud(viewer, filterCloud, "filterCloud");
+    renderBox(viewer, egoCar, 0);
+
+    // segment ground from scene entities using RANSAC
+    ProcessPointClouds<pcl::PointXYZI> pointProcessor;
+    int maxIterations (10);
+    float distanceThreshold (0.2f);
+    std::pair<pcl::PointCloud<pcl::PointXYZI>::Ptr, pcl::PointCloud<pcl::PointXYZI>::Ptr> segmentCloud = pointProcessor.SegmentPlane(filterCloud, maxIterations, distanceThreshold);
+    if (renderSegmentedGround) renderPointCloud(viewer,segmentCloud.first, "groundPcd", Color(1,1,1));
+    if (renderSegmentedEntities) renderPointCloud(viewer,segmentCloud.second, "entitiesPcd", Color(1,1,0)); 
+
+    // cluster scene entities
+    float clusterTolerance (0.8);
+    int minSize (100);
+    int maxSize (500);
+    std::vector<pcl::PointCloud<pcl::PointXYZI>::Ptr> cloudClusters = pointProcessor.Clustering(segmentCloud.second, clusterTolerance, minSize, maxSize);
+
+    // render clusters
+    if (renderClusteredEntities) {
+    int clusterId = 0;
+    for(pcl::PointCloud<pcl::PointXYZI>::Ptr cluster : cloudClusters)
+    {
+        std::cout << "cluster size "; pointProcessor.numPoints(cluster);
+        renderPointCloud(viewer, cluster, "entitiesCluster"+std::to_string(clusterId), Color());
+
+        Box box = pointProcessor.BoundingBox(cluster);
+        renderBox(viewer, box, clusterId);
+
+        ++clusterId;
+    }
+    }
+}
+
+enum Environment { simpleHighwayEnv, cityBlockEnv };
 
 int main (int argc, char** argv)
 {
+    Environment environment (cityBlockEnv);
     std::cout << "starting enviroment" << std::endl;
 
     pcl::visualization::PCLVisualizer::Ptr viewer (new pcl::visualization::PCLVisualizer ("3D Viewer"));
     CameraAngle setAngle = XY;
     initCamera(setAngle, viewer);
-    simpleHighway(viewer);
+    
+    if (environment == simpleHighwayEnv) simpleHighway(viewer);
+
+    std::string pcdFile = "C://sensors/data/pcd/data_1/0000000000.pcd"; // relative paths are tricky, symlinked ./src/sensors/ to C:// dir
+    std::ifstream checkFile(pcdFile);
+    if (environment == cityBlockEnv && !checkFile.good()) {
+        std::cout << "Couldn't read file " << pcdFile;
+        exit(1);
+    }
+    if (environment == cityBlockEnv) cityBlock(viewer, pcdFile);
 
     while (!viewer->wasStopped ())
     {
