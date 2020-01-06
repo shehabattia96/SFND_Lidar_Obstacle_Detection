@@ -42,7 +42,14 @@ void simpleHighway(pcl::visualization::PCLVisualizer::Ptr& viewer)
     // ----------------------------------------------------
     
     // RENDER OPTIONS
-    bool renderScene = true;
+    bool renderScene = false;
+    bool renderLidarRays = false;
+    bool renderLidarPointCloud = false;
+    bool renderSegmentedGround = true;
+    bool renderSegmentedEntities = true;
+    bool renderClusteredEntities = true;
+
+    // render initial scene
     std::vector<Car> cars = initHighway(renderScene, viewer);
     
     double groundSlope = 0.0;
@@ -51,17 +58,38 @@ void simpleHighway(pcl::visualization::PCLVisualizer::Ptr& viewer)
     pcl::PointCloud<pcl::PointXYZ>::Ptr lidarCloud = lidar->scan();
 
     // display lidarCloud in viewer
-    bool showRays = false;
-    if (showRays) renderRays(viewer, lidar->position, lidarCloud);
-    renderPointCloud(viewer, lidarCloud, "lidarCloud");
+    if (renderLidarRays) renderRays(viewer, lidar->position, lidarCloud);
+    if (renderLidarPointCloud) renderPointCloud(viewer, lidarCloud, "lidarCloud");
 
     // segment ground from scene entities using RANSAC
     ProcessPointClouds<pcl::PointXYZ> pointProcessor;
     int maxIterations (10);
     float distanceThreshold (0.2f);
     std::pair<pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr> segmentCloud = pointProcessor.SegmentPlane(lidarCloud, maxIterations, distanceThreshold);
-    renderPointCloud(viewer,segmentCloud.first, "groundPcd", Color(1,0,0));
-    renderPointCloud(viewer,segmentCloud.second, "entitiesPcd", Color(0,1,0)); 
+    if (renderSegmentedGround) renderPointCloud(viewer,segmentCloud.first, "groundPcd", Color(1,1,1));
+    if (renderLidarPointCloud) renderPointCloud(viewer,segmentCloud.second, "entitiesPcd", Color(1,1,0)); 
+
+    // cluster scene entities
+    float clusterTolerance (1.0);
+    int minSize (3);
+    int maxSize (30);
+    std::vector<pcl::PointCloud<pcl::PointXYZ>::Ptr> cloudClusters = pointProcessor.Clustering(segmentCloud.second, clusterTolerance, minSize, maxSize);
+
+    // render clusters
+    if (renderClusteredEntities) {
+    int clusterId = 0;
+    std::vector<Color> colors = {Color(1,0,0), Color(0,1,0), Color(0,0,1)};
+        for(pcl::PointCloud<pcl::PointXYZ>::Ptr cluster : cloudClusters)
+        {
+            std::cout << "cluster size "; pointProcessor.numPoints(cluster);
+            renderPointCloud(viewer, cluster, "entitiesCluster"+std::to_string(clusterId), colors[clusterId]);
+
+            Box box = pointProcessor.BoundingBox(cluster);
+            renderBox(viewer, box, clusterId);
+
+            ++clusterId;
+        }
+    }
 }
 
 

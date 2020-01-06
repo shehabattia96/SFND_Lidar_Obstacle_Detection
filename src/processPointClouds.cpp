@@ -43,8 +43,8 @@ template<typename PointT>
 std::pair<typename pcl::PointCloud<PointT>::Ptr, typename pcl::PointCloud<PointT>::Ptr> ProcessPointClouds<PointT>::SeparateClouds(pcl::PointIndices::Ptr inliers, typename pcl::PointCloud<PointT>::Ptr cloud) 
 {
     // in here, we want to separate the ground from the scene entities.
-    typename pcl::PointCloud<PointT>::Ptr groundPcd (new pcl::PointCloud<PointT>);
-    typename pcl::PointCloud<PointT>::Ptr entitiesPcd (new pcl::PointCloud<PointT>);
+    pcl::PointCloud<PointT>::Ptr groundPcd (new pcl::PointCloud<PointT>);
+    pcl::PointCloud<PointT>::Ptr entitiesPcd (new pcl::PointCloud<PointT>);
     
     pcl::ExtractIndices<PointT> extract;
     extract.setInputCloud(cloud);
@@ -101,9 +101,34 @@ std::vector<typename pcl::PointCloud<PointT>::Ptr> ProcessPointClouds<PointT>::C
     // Time clustering process
     auto startTime = std::chrono::steady_clock::now();
 
-    std::vector<typename pcl::PointCloud<PointT>::Ptr> clusters;
+    // references http://www.pointclouds.org/documentation/tutorials/cluster_extraction.php
+    pcl::search::KdTree<PointT>::Ptr tree (new pcl::search::KdTree<PointT>);
+    tree->setInputCloud(cloud);
 
-    // TODO:: Fill in the function to perform euclidean clustering to group detected obstacles
+    std::vector<pcl::PointIndices> cluster_indices;
+    pcl::EuclideanClusterExtraction<PointT> ec;
+    ec.setClusterTolerance(clusterTolerance); // cm
+    ec.setMinClusterSize(minSize);
+    ec.setMaxClusterSize(maxSize);
+    ec.setSearchMethod(tree);
+    ec.setInputCloud(cloud);
+    ec.extract(cluster_indices);
+
+    std::vector<typename pcl::PointCloud<PointT>::Ptr> clusters;
+     for (std::vector<pcl::PointIndices>::const_iterator it = cluster_indices.begin(); it != cluster_indices.end (); ++it)
+    {
+        pcl::PointCloud<PointT>::Ptr cloud_cluster (new pcl::PointCloud<PointT>);
+        for (std::vector<int>::const_iterator pit = it->indices.begin (); pit != it->indices.end (); ++pit)
+        cloud_cluster->points.push_back(cloud->points[*pit]);
+        cloud_cluster->width = cloud_cluster->points.size();
+        cloud_cluster->height = 1;
+        cloud_cluster->is_dense = true;
+
+        // add cloud_cluster to clusters vector
+        clusters.push_back(cloud_cluster);
+
+        std::cout << "PointCloud representing the Cluster: " << cloud_cluster->points.size () << " data points." << std::endl;
+    }
 
     auto endTime = std::chrono::steady_clock::now();
     auto elapsedTime = std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startTime);
