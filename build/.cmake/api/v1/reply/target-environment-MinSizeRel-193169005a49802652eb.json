@@ -1,0 +1,1178 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "MinSizeRel/environment.exe"
+		},
+		{
+			"path" : "MinSizeRel/environment.pdb"
+		}
+	],
+	"backtrace" : 2,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"_add_executable",
+			"add_executable",
+			"link_directories",
+			"target_link_libraries",
+			"add_definitions",
+			"_find_package",
+			"find_package",
+			"find_qhull",
+			"find_external_library",
+			"set_property",
+			"include",
+			"include_directories"
+		],
+		"files" : 
+		[
+			"C:/Users/Tinker/projects/vcpkg/scripts/buildsystems/vcpkg.cmake",
+			"CMakeLists.txt",
+			"C:/Users/Tinker/projects/vcpkg/installed/x64-windows/share/pcl/Modules/FindQhull.cmake",
+			"C:/Users/Tinker/projects/vcpkg/installed/x64-windows/share/pcl/PCLConfig.cmake",
+			"C:/Users/Tinker/projects/vcpkg/installed/x64-windows/share/vtk/UseVTK.cmake"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 21,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 166,
+				"parent" : 1
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 16,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
+				"file" : 1,
+				"line" : 17,
+				"parent" : 0
+			},
+			{
+				"command" : 6,
+				"file" : 1,
+				"line" : 13,
+				"parent" : 0
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 263,
+				"parent" : 6
+			},
+			{
+				"file" : 3,
+				"parent" : 7
+			},
+			{
+				"command" : 8,
+				"file" : 3,
+				"line" : 523,
+				"parent" : 8
+			},
+			{
+				"command" : 7,
+				"file" : 3,
+				"line" : 308,
+				"parent" : 9
+			},
+			{
+				"command" : 6,
+				"file" : 3,
+				"line" : 169,
+				"parent" : 10
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 263,
+				"parent" : 11
+			},
+			{
+				"file" : 2,
+				"parent" : 12
+			},
+			{
+				"command" : 4,
+				"file" : 2,
+				"line" : 88,
+				"parent" : 13
+			},
+			{
+				"command" : 4,
+				"file" : 2,
+				"line" : 90,
+				"parent" : 13
+			},
+			{
+				"command" : 8,
+				"file" : 3,
+				"line" : 523,
+				"parent" : 8
+			},
+			{
+				"command" : 10,
+				"file" : 3,
+				"line" : 337,
+				"parent" : 16
+			},
+			{
+				"file" : 4,
+				"parent" : 17
+			},
+			{
+				"command" : 9,
+				"file" : 4,
+				"line" : 23,
+				"parent" : 18
+			},
+			{
+				"command" : 11,
+				"file" : 4,
+				"line" : 26,
+				"parent" : 18
+			},
+			{
+				"command" : 11,
+				"file" : 1,
+				"line" : 15,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc  /MD /O1 /Ob1 /DNDEBUG   -std=c++11"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 5,
+					"define" : "BOOST_ALL_NO_LIB"
+				},
+				{
+					"backtrace" : 5,
+					"define" : "DISABLE_PNG"
+				},
+				{
+					"backtrace" : 14,
+					"define" : "qh_QHpointer"
+				},
+				{
+					"backtrace" : 15,
+					"define" : "qh_QHpointer_dllimport"
+				},
+				{
+					"backtrace" : 19,
+					"define" : "vtkDomainsChemistry_AUTOINIT=1(vtkDomainsChemistryOpenGL2)"
+				},
+				{
+					"backtrace" : 19,
+					"define" : "vtkIOExport_INCLUDE=\"C:/Users/Tinker/projects/SFND_Lidar_Obstacle_Detection/build/CMakeFiles/vtkIOExport_AUTOINIT_vtkIOExportOpenGL2_vtkIOExportPDF.h\""
+				},
+				{
+					"backtrace" : 19,
+					"define" : "vtkRenderingContext2D_AUTOINIT=1(vtkRenderingContextOpenGL2)"
+				},
+				{
+					"backtrace" : 19,
+					"define" : "vtkRenderingCore_INCLUDE=\"C:/Users/Tinker/projects/SFND_Lidar_Obstacle_Detection/build/CMakeFiles/vtkRenderingCore_AUTOINIT_vtkInteractionStyle_vtkRenderingFreeType_vtkRenderingOpenGL2.h\""
+				},
+				{
+					"backtrace" : 19,
+					"define" : "vtkRenderingOpenGL2_AUTOINIT=1(vtkRenderingGL2PSOpenGL2)"
+				},
+				{
+					"backtrace" : 19,
+					"define" : "vtkRenderingVolume_AUTOINIT=1(vtkRenderingVolumeOpenGL2)"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 20,
+					"isSystem" : true,
+					"path" : "C:/Users/Tinker/projects/vcpkg/installed/x64-windows/share/vtk/../../include"
+				},
+				{
+					"backtrace" : 20,
+					"isSystem" : true,
+					"path" : "C:/Users/Tinker/projects/vcpkg/installed/x64-windows/share/vtk/../../include/eigen3"
+				},
+				{
+					"backtrace" : 20,
+					"isSystem" : true,
+					"path" : "C:/Users/Tinker/projects/vcpkg/installed/x64-windows/share/vtk/../../include/double-conversion"
+				},
+				{
+					"backtrace" : 21,
+					"isSystem" : true,
+					"path" : "C:/Users/Tinker/projects/vcpkg/installed/x64-windows/include"
+				},
+				{
+					"backtrace" : 21,
+					"isSystem" : true,
+					"path" : "C:/Users/Tinker/projects/vcpkg/installed/x64-windows/include/eigen3"
+				}
+			],
+			"language" : "CXX",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df"
+		}
+	],
+	"id" : "environment::@6890427a1f51a3e7e1df",
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc  /MD /O1 /Ob1 /DNDEBUG",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "/machine:x64  /INCREMENTAL:NO /subsystem:console",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "-LIBPATH:C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\lib",
+				"role" : "libraryPath"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "-LIBPATH:C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib",
+				"role" : "libraryPath"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\lib\\pcl_surface_release.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\lib\\pcl_keypoints_release.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\lib\\pcl_tracking_release.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\lib\\pcl_recognition_release.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\lib\\pcl_stereo_release.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\lib\\pcl_outofcore_release.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\lib\\pcl_people_release.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\lib\\boost_system-vc140-mt.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\lib\\boost_filesystem-vc140-mt.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\lib\\boost_thread-vc140-mt.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\lib\\boost_date_time-vc140-mt.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\lib\\boost_iostreams-vc140-mt.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\lib\\boost_serialization-vc140-mt.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\lib\\boost_chrono-vc140-mt.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\lib\\boost_atomic-vc140-mt.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\lib\\boost_regex-vc140-mt.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\lib\\qhull_p.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\flann_cppd.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\lib\\zlib.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\lib\\freetype.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\debug\\lib\\freetyped.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\lib\\double-conversion.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\lib\\lz4.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\debug\\lib\\lz4d.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\lib\\lzma.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\debug\\lib\\lzmad.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\lib\\expat.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\lib\\glew32.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\debug\\lib\\glew32d.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\lib\\jpeg.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\debug\\lib\\jpegd.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\lib\\libpng16.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\debug\\lib\\libpng16d.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\lib\\tiff.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\debug\\lib\\tiffd.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\lib\\proj.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\lib\\hdf5.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\debug\\lib\\hdf5_D.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\lib\\hdf5_hl.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\debug\\lib\\hdf5_hl_D.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\lib\\netcdf.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\lib\\libhpdf.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\debug\\lib\\libhpdfd.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\lib\\libxml2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\lib\\ogg.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\lib\\theoraenc.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\lib\\theoradec.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\lib\\jsoncpp.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\lib\\sqlite3.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\lib\\pcl_registration_release.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\lib\\pcl_segmentation_release.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\lib\\pcl_features_release.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\lib\\pcl_filters_release.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\lib\\pcl_sample_consensus_release.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkDomainsChemistryOpenGL2-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkDomainsChemistry-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkFiltersFlowPaths-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkFiltersGeneric-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkFiltersHyperTree-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkFiltersParallelImaging-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkFiltersPoints-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkFiltersProgrammable-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkFiltersSMP-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkFiltersSelection-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkFiltersTexture-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkFiltersTopology-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkFiltersVerdict-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkverdict-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkIOAMR-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkFiltersAMR-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkIOAsynchronous-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkIOCityGML-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkIOEnSight-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkIOExodus-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkIOExportOpenGL2-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkIOExportPDF-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkIOExport-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkRenderingGL2PSOpenGL2-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkgl2ps-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\lib\\libpng16.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkIOImport-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkIOInfovis-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkIOLSDyna-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkIOMINC-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkIOMovie-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\lib\\ogg.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\lib\\theoraenc.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\lib\\theoradec.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkIOPLY-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkIOParallel-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkFiltersParallel-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkexodusII-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\lib\\netcdf.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkIOGeometry-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkIONetCDF-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkIOParallelXML-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkParallelCore-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkIOLegacy-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkIOSQL-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkIOSegY-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkIOTecplotTable-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkIOVeraOut-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkIOVideo-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkImagingMorphological-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkImagingStatistics-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkImagingStencil-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkInteractionImage-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkRenderingContextOpenGL2-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkRenderingImage-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkRenderingLOD-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkRenderingVolumeOpenGL2-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkRenderingOpenGL2-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkImagingMath-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\lib\\glew32.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkViewsContext2D-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkViewsGeovis-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkGeovisCore-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\lib\\proj.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkViewsInfovis-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkChartsCore-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkRenderingContext2D-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkFiltersImaging-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkInfovisLayout-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkInfovisCore-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkViewsCore-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkInteractionWidgets-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkFiltersHybrid-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkImagingGeneral-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkImagingSources-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkFiltersModeling-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkImagingHybrid-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkIOImage-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkDICOMParser-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkmetaio-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\lib\\zlib.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "comctl32.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "wsock32.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkInteractionStyle-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkFiltersExtraction-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkFiltersStatistics-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkImagingFourier-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkRenderingAnnotation-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkImagingColor-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkRenderingVolume-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkImagingCore-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkIOXML-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkIOXMLParser-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkIOCore-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkRenderingLabel-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkRenderingFreeType-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkRenderingCore-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkCommonColor-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkFiltersGeometry-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkFiltersSources-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkFiltersGeneral-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkCommonComputationalGeometry-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkFiltersCore-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkCommonExecutionModel-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkCommonDataModel-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkCommonMisc-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkCommonSystem-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtksys-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "ws2_32.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "Psapi.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkCommonTransforms-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkCommonMath-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\vtkCommonCore-8.2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\lib\\freetype.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\lib\\pcl_ml_release.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\lib\\pcl_visualization_release.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\lib\\pcl_search_release.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\lib\\pcl_kdtree_release.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\lib\\pcl_io_release.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\lib\\pcl_octree_release.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\lib\\pcl_common_release.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\lib\\zlib.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\lib\\freetype.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\debug\\lib\\freetyped.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\lib\\double-conversion.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\lib\\lz4.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\debug\\lib\\lz4d.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\lib\\lzma.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\debug\\lib\\lzmad.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\lib\\expat.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\lib\\glew32.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\debug\\lib\\glew32d.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\lib\\jpeg.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\debug\\lib\\jpegd.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\lib\\libpng16.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\debug\\lib\\libpng16d.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\lib\\tiff.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\debug\\lib\\tiffd.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\lib\\proj.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\lib\\hdf5.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\debug\\lib\\hdf5_D.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\lib\\hdf5_hl.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\debug\\lib\\hdf5_hl_D.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\lib\\netcdf.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\lib\\libhpdf.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\debug\\lib\\libhpdfd.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\lib\\libxml2.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\lib\\ogg.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\lib\\theoraenc.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\lib\\theoradec.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\lib\\jsoncpp.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\share\\vtk\\..\\..\\lib\\sqlite3.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\Tinker\\projects\\vcpkg\\installed\\x64-windows\\debug\\lib\\lz4d.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib",
+				"role" : "libraries"
+			}
+		],
+		"language" : "CXX"
+	},
+	"name" : "environment",
+	"nameOnDisk" : "environment.exe",
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "src/environment.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "src/render/render.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "src/processPointClouds.cpp",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "EXECUTABLE"
+}
