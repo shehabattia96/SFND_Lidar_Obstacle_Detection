@@ -22,9 +22,9 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${vcpkgRoot}/x64-windows/include",
-                "${vcpkgRoot}/x86-windows/include",
-                "C:/Users/Tinker/projects/vcpkg/installed/x64-windows/include"
+                "${vcpkgRoot}/installed/x64-windows/include",
+                "${vcpkgRoot}/installed/x86-windows/include",
+                "D:/projects/vcpkg/installed/x64-windows/include"
             ],
             "defines": [
                 "_DEBUG",

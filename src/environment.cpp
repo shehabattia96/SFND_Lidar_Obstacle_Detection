@@ -1,6 +1,7 @@
 /* \author Aaron Brown */
 // Create simple 3d highway enviroment using PCL
 // for exploring self-driving car sensors
+#include <filesystem>
 
 #include "sensors/lidar.h"
 #include "render/render.h"
@@ -207,12 +208,36 @@ void loopFrame(typename pcl::visualization::PCLVisualizer::Ptr viewer, typename 
     }
 };
 
-enum Environment { simpleHighwayEnv, cityBlockFileEnv, cityBlockStreamEnv };
+enum EnvironmentEnum { simpleHighwayEnv, cityBlockFileEnv, cityBlockStreamEnv };
+std::map<std::string, EnvironmentEnum> EnvironmentMap = {
+    {"simpleHighway", simpleHighwayEnv},
+    {"cityBlockFile", cityBlockFileEnv},
+    {"cityBlockStream", cityBlockStreamEnv},
+};
+namespace filesystem = std::experimental::filesystem;
 
 int main (int argc, char** argv)
 {
-    Environment environment (cityBlockStreamEnv);
-    std::cout << "starting enviroment" << std::endl;
+    // set environment from args
+    EnvironmentEnum environment (simpleHighwayEnv);
+    if (argc > 1) {
+        std::string requestedEnvironment = argv[1];
+        if (EnvironmentMap.count(requestedEnvironment) > 0) {
+            environment = EnvironmentMap.at(requestedEnvironment);
+        } else {
+            std::cout << requestedEnvironment << " is not an environment that can be loaded.";
+            exit(1);
+        }
+    }
+    // define file paths
+    filesystem::path currentPath = filesystem::current_path(); // this assumes you're running from root dir
+    filesystem::path relativeDataFolder = "/src/sensors/data/pcd/data_1";
+    filesystem::path dataFolder = currentPath;
+    dataFolder += relativeDataFolder;
+    filesystem::path pcdFile = dataFolder;
+    pcdFile += "/0000000000.pcd";
+
+    std::cout << "starting enviroment in " << currentPath << std::endl;
 
     pcl::visualization::PCLVisualizer::Ptr viewer (new pcl::visualization::PCLVisualizer ("3D Viewer"));
     CameraAngle setAngle = XY;
@@ -223,25 +248,26 @@ int main (int argc, char** argv)
         loopFrame(viewer);
     }
 
-    
     if (environment == cityBlockStreamEnv || environment == cityBlockFileEnv) {
         ProcessPointClouds<pcl::PointXYZI>* pointProcessorI (new ProcessPointClouds<pcl::PointXYZI>);
         
         if (environment == cityBlockFileEnv) {
-            std::string pcdFile = "C://sensors/data/pcd/data_1/0000000000.pcd"; // relative paths are tricky, symlinked ./src/sensors/ to C:// dir
-            std::ifstream checkFile(pcdFile);
-            if (!checkFile.good()) {
+            if (!filesystem::is_regular_file(pcdFile)) {
                 std::cout << "Couldn't read file " << pcdFile;
                 exit(1);
             }
-            pcl::PointCloud<pcl::PointXYZI>::Ptr inputCloud = pointProcessorI->loadPcd(pcdFile);
+            pcl::PointCloud<pcl::PointXYZI>::Ptr inputCloud = pointProcessorI->loadPcd(pcdFile.u8string());
             std::cout << "input cloud loaded with number of points equal "; pointProcessorI->numPoints(inputCloud);
             cityBlock(viewer, pointProcessorI, inputCloud);
             loopFrame(viewer);
         }
 
         if (environment == cityBlockStreamEnv) {
-            std::vector<boost::filesystem::path> stream = pointProcessorI->streamPcd("C://sensors/data/pcd/data_1/");
+            if (!filesystem::is_directory(dataFolder)) {
+                std::cout << "Couldn't read folder " << dataFolder;
+                exit(1);
+            }
+            std::vector<boost::filesystem::path> stream = pointProcessorI->streamPcd(dataFolder.u8string());
             pcl::PointCloud<pcl::PointXYZI>::Ptr inputCloudI;
             loopFrame(viewer, inputCloudI, &stream, pointProcessorI);
         }

@@ -84,7 +84,8 @@
         "xutility": "cpp",
         "string_view": "cpp",
         "*.ipp": "cpp",
-        "resumable": "cpp"
+        "resumable": "cpp",
+        "filesystem": "cpp"
     },
     "cmake.cpptools.compilerPath": "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.21.27702/bin/Hostx64/x64/cl.exe"
 }

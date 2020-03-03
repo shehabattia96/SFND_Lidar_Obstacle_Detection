@@ -1,3 +1,0 @@
-C:/Users/Tinker/projects/SFND_Lidar_Obstacle_Detection/build/CMakeFiles/environment.dir
-C:/Users/Tinker/projects/SFND_Lidar_Obstacle_Detection/build/CMakeFiles/ALL_BUILD.dir
-C:/Users/Tinker/projects/SFND_Lidar_Obstacle_Detection/build/CMakeFiles/ZERO_CHECK.dir
