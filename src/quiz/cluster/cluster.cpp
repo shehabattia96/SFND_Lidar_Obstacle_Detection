@@ -69,18 +69,54 @@ void render2DTree(Node* node, pcl::visualization::PCLVisualizer::Ptr& viewer, Bo
 
 		render2DTree(node->left,viewer, lowerWindow, iteration, depth+1);
 		render2DTree(node->right,viewer, upperWindow, iteration, depth+1);
-
-
 	}
 
 }
 
-std::vector<std::vector<int>> euclideanCluster(const std::vector<std::vector<float>>& points, KdTree* tree, float distanceTol)
+
+
+std::vector<std::vector<int>> euclideanCluster(KdTree* tree, float distanceTol)
 {
-
-	// TODO: Fill out this function to return list of indices for each cluster
-
 	std::vector<std::vector<int>> clusters;
+	std::vector<Node *> visitedNodesQueue = { tree->root }; // nodes we're transversing using BFS
+	std::vector<bool> searchedNodes(tree->treeLength, false); // nodes that were found by tree->search()
+	Node* currentNode;
+	while (visitedNodesQueue.size() > 0) {
+		currentNode = visitedNodesQueue[0];
+		std::vector<Node *> boundaryPointsVisitedNodesQueue = { currentNode }; // nodes we're transversing using BFS
+		std::vector<bool>  boundaryPointsSearchedNodes(tree->treeLength, false); // nodes that were found by tree->search()
+		if (currentNode != NULL) {
+			visitedNodesQueue.push_back(currentNode->left);
+			visitedNodesQueue.push_back(currentNode->right);
+			if (!searchedNodes[currentNode->id]) {
+				std::vector<int> cluster;
+				while (boundaryPointsVisitedNodesQueue.size() > 0) {
+					Node* currentBoundaryPointNode = boundaryPointsVisitedNodesQueue[0];
+					if (!boundaryPointsSearchedNodes[currentBoundaryPointNode->id]) {
+						boundaryPointsSearchedNodes[currentBoundaryPointNode->id] = true;
+						SearchObject searchObject = tree->search(currentBoundaryPointNode->point, distanceTol);
+						cluster.insert(cluster.end(), searchObject.ids.begin(), searchObject.ids.end());
+						for (int id: searchObject.ids) {
+							searchedNodes[id] = true;
+						}
+						for (int axis = 0; axis < searchObject.boundaryPoints.size(); axis += 1) {
+							std::vector<BoundaryPoint> boundaryPoints = searchObject.boundaryPoints[axis];
+							boundaryPointsVisitedNodesQueue.push_back(boundaryPoints[0].node);
+							searchedNodes[boundaryPoints[0].id] = false;
+							boundaryPointsVisitedNodesQueue.push_back(boundaryPoints[1].node);
+							searchedNodes[boundaryPoints[1].id] = false;
+						}
+					} else {
+						searchedNodes[currentBoundaryPointNode->id] = true;
+					}
+					boundaryPointsVisitedNodesQueue.erase(boundaryPointsVisitedNodesQueue.begin()); // pop the first element
+				}
+				clusters.push_back(cluster);
+				searchedNodes[currentNode->id] = true;
+			}
+		}
+		visitedNodesQueue.erase(visitedNodesQueue.begin()); // pop the first element
+	}
  
 	return clusters;
 
@@ -88,7 +124,6 @@ std::vector<std::vector<int>> euclideanCluster(const std::vector<std::vector<flo
 
 int main ()
 {
-
 	// Create viewer
 	Box window;
   	window.x_min = -10;
@@ -112,17 +147,11 @@ int main ()
 
   	int it = 0;
   	render2DTree(tree->root,viewer,window, it);
-  
-  	std::cout << "Test Search" << std::endl;
-  	std::vector<int> nearby = tree->search({-6,7},3.0);
-  	for(int index : nearby)
-      std::cout << index << ",";
-  	std::cout << std::endl;
 
   	// Time segmentation process
   	auto startTime = std::chrono::steady_clock::now();
   	//
-  	std::vector<std::vector<int>> clusters = euclideanCluster(points, tree, 3.0);
+  	std::vector<std::vector<int>> clusters = euclideanCluster(tree, 3.0);
   	//
   	auto endTime = std::chrono::steady_clock::now();
   	auto elapsedTime = std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startTime);

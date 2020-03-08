@@ -25,6 +25,18 @@
         "cwd": "${workspaceFolder}",
         "environment": [],
         "externalConsole": false
+      },
+      
+      {
+        "name": "(msvc) clusterQuiz",
+        "type": "cppvsdbg",
+        "request": "launch",
+        "program": "${workspaceFolder}/src/quiz/cluster/build/Debug/quizCluster.exe",
+        "args": [],
+        "stopAtEntry": true,
+        "cwd": "${workspaceFolder}",
+        "environment": [],
+        "externalConsole": false
       }
     ]
   }
