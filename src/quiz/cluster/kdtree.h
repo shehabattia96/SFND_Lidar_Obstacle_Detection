@@ -20,16 +20,48 @@ struct Node
 struct KdTree
 {
 	Node* root;
+	unsigned int numDimensions; // numDimensions = 2 for (X, Y) and 3 for (X, Y, Z)
 
-	KdTree()
-	: root(NULL)
+	KdTree(unsigned int numDimensions)
+	: root(NULL), numDimensions(numDimensions)
 	{}
+
+	float getValueOfPointAtSpecifiedDepth(std::vector<float>* point, unsigned int treeDepth) {
+		if (point->empty()) {
+			return NULL;
+		}
+		unsigned int dimensionToCompare = treeDepth % this->numDimensions;
+		return (*point)[dimensionToCompare];
+	}
+
+	Node* transverseTreeToInsertPoint(unsigned int treeDepth, std::vector<float> point, int id, Node* currentNode) {
+		// assign first node
+		if (currentNode == (struct Node *) NULL) {
+			Node* newNode = new Node(point, id);
+			currentNode = newNode;
+			return currentNode;
+		}
+		// Find out which dimension we will compare
+		unsigned int dimensionToCompare = treeDepth % this->numDimensions;
+
+		float pointValue = this->getValueOfPointAtSpecifiedDepth(&point, dimensionToCompare);
+		float currentNodeValue = this->getValueOfPointAtSpecifiedDepth(&(currentNode->point), dimensionToCompare);
+
+		if (pointValue < currentNodeValue) {
+			Node* leftNode = currentNode->left;
+			currentNode->left = transverseTreeToInsertPoint(treeDepth + 1, point, id, leftNode);
+			return currentNode;
+		}
+		
+		Node* rightNode = currentNode->right;
+		currentNode->right = transverseTreeToInsertPoint(treeDepth + 1, point, id, rightNode);
+		return currentNode;
+	}
 
 	void insert(std::vector<float> point, int id)
 	{
-		// TODO: Fill in this function to insert a new point into the tree
-		// the function should create a new node and place correctly with in the root 
-
+		// We start searching the tree from depth 0
+		root = transverseTreeToInsertPoint(0, point, id, root);
 	}
 
 	// return a list of point ids in the tree that are within distance of target

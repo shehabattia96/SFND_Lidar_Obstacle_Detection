@@ -1,11 +1,25 @@
 {
     "version": "0.2.0",
     "configurations": [
+
+
       {
         "name": "(msvc) Launch",
         "type": "cppvsdbg",
         "request": "launch",
         "program": "${workspaceFolder}/build/Debug/environment.exe",
+        "args": [],
+        "stopAtEntry": true,
+        "cwd": "${workspaceFolder}",
+        "environment": [],
+        "externalConsole": false
+      },
+      
+      {
+        "name": "(msvc) KD Tree test",
+        "type": "cppvsdbg",
+        "request": "launch",
+        "program": "${workspaceFolder}/src/quiz/cluster/build/Debug/test_kdtree.exe",
         "args": [],
         "stopAtEntry": true,
         "cwd": "${workspaceFolder}",

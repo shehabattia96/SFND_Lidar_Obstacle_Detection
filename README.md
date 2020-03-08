@@ -23,11 +23,17 @@ This is an online Udacity course project. I implement my own RANSAC, KD-Tree and
 
 ## Getting started
 
+### dependencies
+
+- PCL, BOOST, FLANN (via vcpkg)
+- cmake 3.16.2
+- MSVC 14.21's compiler (but any other c/cpp compiler should also work)
+
 ### how to run
 
 #### via debugger
 
-The debugger shortcut for VS Code is F5. By default, the environment is set to `simpleHighway` in main().
+The debugger shortcut for VS Code is F5. By default, the environment is set to `cityBlockStreamEnv` in main().
 
 #### via CLI
 
@@ -54,6 +60,11 @@ The first argument is the environemnt. Running `Environment simpleHighway|cityBl
 - shortcuts:
   - `ctrl + shift + b` to build
   - `F5` to debug
+
+### troubleshooting
+
+- For my machine, I had to choose x64 in CMake Gui to get the dependencies to be discovered properly (even though I had x86 dependencies installed as well).
+- I noticed that on first run after building, I got an error `error while loading shared libraries: pcl_common_debug.dll: cannot open shared object file: No such file or directory` but the problem was actually a missing DLL file `build\Debug\libpng16.dll`. I cloned and renamed `libpng16d.dll` to `libpng16.dll` and the program worked.
 
 ## Project references
 

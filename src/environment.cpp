@@ -219,7 +219,7 @@ namespace filesystem = std::experimental::filesystem;
 int main (int argc, char** argv)
 {
     // set environment from args
-    EnvironmentEnum environment (simpleHighwayEnv);
+    EnvironmentEnum environment (cityBlockStreamEnv);
     if (argc > 1) {
         std::string requestedEnvironment = argv[1];
         if (EnvironmentMap.count(requestedEnvironment) > 0) {
@@ -231,11 +231,11 @@ int main (int argc, char** argv)
     }
     // define file paths
     filesystem::path currentPath = filesystem::current_path(); // this assumes you're running from root dir
-    filesystem::path relativeDataFolder = "/src/sensors/data/pcd/data_1";
+    filesystem::path relativeDataFolder = "/src/sensors/data/pcd/data_1/";
     filesystem::path dataFolder = currentPath;
     dataFolder += relativeDataFolder;
     filesystem::path pcdFile = dataFolder;
-    pcdFile += "/0000000000.pcd";
+    pcdFile += "0000000000.pcd";
 
     std::cout << "starting enviroment in " << currentPath << std::endl;
 
