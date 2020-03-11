@@ -24,6 +24,8 @@ void test_getValueOfPointAtSpecifiedDepth() {
 	KdTree* tree = new KdTree(numDimensions);
     test_getValueOfPointAtSpecifiedDepth_treeDepthZero(&point, tree);
     test_getValueOfPointAtSpecifiedDepth_treeDepthOne(&point, tree);
+
+    delete tree;
 }
 
 void test_transverseTreeToInsertPoint() {
@@ -44,6 +46,8 @@ void test_transverseTreeToInsertPoint() {
     assert(tree->root->right->right->point == points[3]);
     std::cout << "Root's first left should be points[2]" << std::endl;
     assert(tree->root->left->point == points[2]);
+
+    delete tree;
 }
 
 
@@ -56,6 +60,7 @@ void test_euclideanDistance() {
     std::vector<std::vector<float>> points3D = { {2,0,0}, {2,2,0}, {2,0,2} };
     assert(2 == tree->euclideanDistance(points3D[0], points3D[1]));
     assert(2 == tree->euclideanDistance(points3D[0], points3D[2]));
+    delete tree;
 }
 
 
@@ -68,20 +73,13 @@ void test_searchForNodesWithinDistanceOfTarget(){
     for (int i=0; i<points.size(); i++) 
     	tree->insert(points[i],i); 
 
-  	SearchObject nearbySearchObject = tree->search({-6,7},3.0);
-    std::vector<int> nearby = nearbySearchObject.ids;
+  	std::vector<int> nearby = tree->search({-6,7},3.0);
     std::vector<int> expectedNearby = {0,1,2,3};
     // assert ids are correct
     std::cout << "assert ids are correct" << std::endl;
   	for(int index = 0; index < nearby.size(); index += 1)
       assert(nearby[index] == expectedNearby[index]);
-
-    // assert bounding points are correct:
-    std::cout << "assert bounding points are correct" << std::endl;
-    assert(nearbySearchObject.boundaryPoints[0][0].value == points[1][0]);
-    assert(nearbySearchObject.boundaryPoints[0][1].value == points[2][0]);
-    assert(nearbySearchObject.boundaryPoints[1][0].value == points[3][1]);
-    assert(nearbySearchObject.boundaryPoints[1][1].value == points[1][1]);
+    delete tree;
 }
 
 

@@ -44,7 +44,7 @@ pcl::PointCloud<pcl::PointXYZ>::Ptr CreateData(std::vector<std::vector<float>> p
 }
 
 
-void render2DTree(Node* node, pcl::visualization::PCLVisualizer::Ptr& viewer, Box window, int& iteration, unsigned int depth=0)
+void render2DTree(std::shared_ptr<Node> node, pcl::visualization::PCLVisualizer::Ptr& viewer, Box window, int& iteration, unsigned int depth=0)
 {
 
 	if(node!=NULL)
@@ -78,38 +78,22 @@ void render2DTree(Node* node, pcl::visualization::PCLVisualizer::Ptr& viewer, Bo
 std::vector<std::vector<int>> euclideanCluster(KdTree* tree, float distanceTol)
 {
 	std::vector<std::vector<int>> clusters;
-	std::vector<Node *> visitedNodesQueue = { tree->root }; // nodes we're transversing using BFS
+	std::vector<std::shared_ptr<Node>> visitedNodesQueue = { tree->root }; // nodes we're transversing using BFS
 	std::vector<bool> searchedNodes(tree->treeLength, false); // nodes that were found by tree->search()
-	Node* currentNode;
+	std::shared_ptr<Node> currentNode;
 	while (visitedNodesQueue.size() > 0) {
 		currentNode = visitedNodesQueue[0];
-		std::vector<Node *> boundaryPointsVisitedNodesQueue = { currentNode }; // nodes we're transversing using BFS
-		std::vector<bool>  boundaryPointsSearchedNodes(tree->treeLength, false); // nodes that were found by tree->search()
 		if (currentNode != NULL) {
 			visitedNodesQueue.push_back(currentNode->left);
 			visitedNodesQueue.push_back(currentNode->right);
 			if (!searchedNodes[currentNode->id]) {
 				std::vector<int> cluster;
-				while (boundaryPointsVisitedNodesQueue.size() > 0) {
-					Node* currentBoundaryPointNode = boundaryPointsVisitedNodesQueue[0];
-					if (!boundaryPointsSearchedNodes[currentBoundaryPointNode->id]) {
-						boundaryPointsSearchedNodes[currentBoundaryPointNode->id] = true;
-						SearchObject searchObject = tree->search(currentBoundaryPointNode->point, distanceTol);
-						cluster.insert(cluster.end(), searchObject.ids.begin(), searchObject.ids.end());
-						for (int id: searchObject.ids) {
-							searchedNodes[id] = true;
-						}
-						for (int axis = 0; axis < searchObject.boundaryPoints.size(); axis += 1) {
-							std::vector<BoundaryPoint> boundaryPoints = searchObject.boundaryPoints[axis];
-							boundaryPointsVisitedNodesQueue.push_back(boundaryPoints[0].node);
-							searchedNodes[boundaryPoints[0].id] = false;
-							boundaryPointsVisitedNodesQueue.push_back(boundaryPoints[1].node);
-							searchedNodes[boundaryPoints[1].id] = false;
-						}
-					} else {
-						searchedNodes[currentBoundaryPointNode->id] = true;
+				std::vector<int> ids = tree->search(currentNode->point, distanceTol);
+				for (int id: ids) {
+					if (!searchedNodes[id]) {
+						searchedNodes[id] = true;
+						cluster.push_back(id);
 					}
-					boundaryPointsVisitedNodesQueue.erase(boundaryPointsVisitedNodesQueue.begin()); // pop the first element
 				}
 				clusters.push_back(cluster);
 				searchedNodes[currentNode->id] = true;
@@ -176,4 +160,5 @@ int main ()
   	  viewer->spinOnce ();
   	}
   	
+	delete tree;
 }

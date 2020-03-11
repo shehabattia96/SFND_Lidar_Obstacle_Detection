@@ -10,33 +10,17 @@ struct Node
 {
 	std::vector<float> point;
 	int id;
-	Node* left;
-	Node* right;
+	std::shared_ptr<Node> left;
+	std::shared_ptr<Node> right;
 
 	Node(std::vector<float> arr, int setId)
 	:	point(arr), id(setId), left(NULL), right(NULL)
 	{}
 };
 
-struct BoundaryPoint
-{
-	int id;
-	float value;
-	Node* node;
-	BoundaryPoint() : id(NULL), value(NULL), node(NULL) {}
-	BoundaryPoint(int setId, float setValue, Node* setNode) : id(setId), value(setValue), node(setNode) {}
-};
-
-struct SearchObject
-{
-	std::vector<std::vector<BoundaryPoint>> boundaryPoints;
-	std::vector<int> ids;
-	SearchObject() {}
-};
-
 struct KdTree
 {
-	Node* root;
+	std::shared_ptr<Node> root;
 	unsigned int numDimensions; // numDimensions = 2 for (X, Y) and 3 for (X, Y, Z)
 	size_t treeLength = 0; // this will need to be updated if we introduce a remove function
 
@@ -52,10 +36,10 @@ struct KdTree
 		return (*point)[dimensionToCompare];
 	}
 
-	Node* transverseTreeToInsertPoint(unsigned int treeDepth, std::vector<float> point, int id, Node* currentNode) {
+	std::shared_ptr<Node> transverseTreeToInsertPoint(unsigned int treeDepth, std::vector<float> point, int id, std::shared_ptr<Node> currentNode) {
 		// assign first node
-		if (currentNode == (struct Node *) NULL) {
-			Node* newNode = new Node(point, id);
+		if (currentNode == NULL) {
+			std::shared_ptr<Node> newNode(new Node(point, id));
 			currentNode = newNode;
 			return currentNode;
 		}
@@ -66,12 +50,12 @@ struct KdTree
 		float currentNodeValue = this->getValueOfPointAtSpecifiedDepth(&(currentNode->point), dimensionToCompare);
 
 		if (pointValue < currentNodeValue) {
-			Node* leftNode = currentNode->left;
+			std::shared_ptr<Node> leftNode = currentNode->left;
 			currentNode->left = transverseTreeToInsertPoint(treeDepth + 1, point, id, leftNode);
 			return currentNode;
 		}
 		
-		Node* rightNode = currentNode->right;
+		std::shared_ptr<Node> rightNode = currentNode->right;
 		currentNode->right = transverseTreeToInsertPoint(treeDepth + 1, point, id, rightNode);
 		return currentNode;
 	}
@@ -97,9 +81,9 @@ struct KdTree
 		return distance;
 	}
 
-	SearchObject* searchForNodesWithinDistanceOfTarget(Node* currentNode, SearchObject* searchObject, unsigned int treeDepth, std::vector<float> target, float distanceTol) {
-		if (currentNode == (struct Node *) NULL) {
-			return searchObject;
+	std::vector<int>* searchForNodesWithinDistanceOfTarget(std::shared_ptr<Node> currentNode, std::vector<int>* ids, unsigned int treeDepth, std::vector<float> target, float distanceTol) {
+		if (currentNode == NULL) {
+			return ids;
 		}
 		// Find out which dimension we will compare
 		unsigned int dimensionToCompare = treeDepth % this->numDimensions;
@@ -109,53 +93,29 @@ struct KdTree
 
 		// we'll go straight to calculating euclidean distance
 		if (this->euclideanDistance(target, currentNodePoint) < distanceTol) {
-			searchObject->ids.push_back(currentNode->id);
-				
-			for (int axis = 0; axis < this->numDimensions; axis += 1) {
-				std::vector<BoundaryPoint> axisBoundaryPoints = searchObject->boundaryPoints[axis];
-				BoundaryPoint* minAxisBoundaryPoint = &axisBoundaryPoints[0];
-				BoundaryPoint* maxAxisBoundaryPoint = &axisBoundaryPoints[1];
-				float currentNodeValueAtAxis = this->getValueOfPointAtSpecifiedDepth(&currentNodePoint, axis);
-				if (minAxisBoundaryPoint->value == NULL || currentNodeValueAtAxis < minAxisBoundaryPoint->value) {
-					minAxisBoundaryPoint->value = currentNodeValueAtAxis;
-					minAxisBoundaryPoint->id = currentNode->id;
-					minAxisBoundaryPoint->node = currentNode;
-					searchObject->boundaryPoints[axis][0] = *minAxisBoundaryPoint;
-				}
-				
-				if (maxAxisBoundaryPoint->value == NULL || currentNodeValueAtAxis > maxAxisBoundaryPoint->value) {
-					maxAxisBoundaryPoint->value = currentNodeValueAtAxis;
-					maxAxisBoundaryPoint->id = currentNode->id;
-					maxAxisBoundaryPoint->node = currentNode;
-					searchObject->boundaryPoints[axis][1] = *maxAxisBoundaryPoint;
-				}
-			}
+			ids->push_back(currentNode->id);
 		}
 
 		float currentNodeValue = this->getValueOfPointAtSpecifiedDepth(&(currentNodePoint), dimensionToCompare);
 
 		if (targetValue - distanceTol < currentNodeValue) {
-			Node* leftNode = currentNode->left;
-			searchObject = searchForNodesWithinDistanceOfTarget(leftNode, searchObject, treeDepth + 1, target, distanceTol);
+			std::shared_ptr<Node> leftNode = currentNode->left;
+			ids = searchForNodesWithinDistanceOfTarget(leftNode, ids, treeDepth + 1, target, distanceTol);
 		}
 
 		if (targetValue + distanceTol > currentNodeValue) {
-			Node* rightNode = currentNode->right;
-			searchObject = searchForNodesWithinDistanceOfTarget(rightNode, searchObject, treeDepth + 1, target, distanceTol);
+			std::shared_ptr<Node> rightNode = currentNode->right;
+			ids = searchForNodesWithinDistanceOfTarget(rightNode, ids, treeDepth + 1, target, distanceTol);
 		}
-		return searchObject;
+		return ids;
 	}
 
 	// return a list of point ids in the tree that are within distance of target
-	SearchObject search(std::vector<float> target, float distanceTol)
+	std::vector<int> search(std::vector<float> target, float distanceTol)
 	{
-		SearchObject* searchObject = new SearchObject();
-		for (int index = 0; index < this->numDimensions; index += 1) {
-			std::vector<BoundaryPoint> axisBoundaryPoints= { BoundaryPoint(), BoundaryPoint() };
-			searchObject->boundaryPoints.push_back(axisBoundaryPoints);
-		}
-		searchObject = searchForNodesWithinDistanceOfTarget(root, searchObject, 0, target, distanceTol);
-		return *searchObject;
+		std::vector<int> ids;
+		ids = *searchForNodesWithinDistanceOfTarget(root, &ids, 0, target, distanceTol);
+		return ids;
 	}
 
 };

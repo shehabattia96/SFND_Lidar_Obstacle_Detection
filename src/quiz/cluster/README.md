@@ -19,7 +19,7 @@ Our KDTree is going to be a binary tree to represent 2D/3D points to make it eas
 ### Knn Clustering
 
 - The solution in the lesson sounds pretty expensive. We're transversing the Kd-Tree, which is O(n) worst case, then for each unprocessed point, we're transversing again to get a list of nearby points (let's say, length x), so total time complexity = O(N^2+x).
-  - If we can capture max and min points in each direction while searching, we could assume all points in the ROI between min and max are processed, then do Kd-Tree search on just the boundary points.
+  - If we can capture ~~max and min points in each direction while searching, we could assume all points in the ROI between min and max are processed, then do Kd-Tree search on just the boundary points.~~ (in hind-sight, this wasn't necessary since Kd-tree search handles iteratively finding closest neighbors.. HOWEVER, adding all the found IDs to the searchedNodes list was good.)
     - Then we BFS the entire tree and keep clustering
 
 ## future enhancements
